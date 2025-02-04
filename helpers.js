@@ -79,5 +79,5 @@ exports.getNumberProperties = function (num) {
   const digit_sum = sumDigits(num);
   const prop = getProperties(num);
 
-  return { is_prime, is_perfect, prop, digit_sum };
+  return { is_prime, is_perfect, properties: prop, digit_sum };
 };
