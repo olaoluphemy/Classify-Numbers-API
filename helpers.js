@@ -1,11 +1,15 @@
 const superagent = require("superagent");
 
 exports.getFunFact = async function (query) {
-  const res = await superagent
-    .get(`http://numbersapi.com/${+query}/math`)
-    .type("text/plain");
+  try {
+    const res = await superagent
+      .get(`http://numbersapi.com/${+query}/math`)
+      .type("text/plain");
 
-  return res.text;
+    return res.text;
+  } catch (err) {
+    throw err;
+  }
 };
 
 getPrimeState = function (num) {
