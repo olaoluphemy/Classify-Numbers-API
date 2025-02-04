@@ -1,19 +1,23 @@
 const { getFunFact, getNumberProperties } = require("../helpers");
 
 exports.getNumber = async function (req, res) {
-  const query = req.query.number;
+  const queryParam = req.query.number;
 
-  if (!Number.isFinite(+query) || !Number.isInteger(+query))
+  if (
+    !queryParam ||
+    !Number.isFinite(+queryParam) ||
+    !Number.isInteger(+queryParam)
+  )
     return res.status(400).json({
-      number: query || "",
+      number: queryParam || "",
       error: true,
     });
 
-  const fun_fact = await getFunFact(query);
-  const properties = getNumberProperties(query);
+  const fun_fact = await getFunFact(queryParam);
+  const properties = getNumberProperties(queryParam);
 
   res.status(200).json({
-    number: +query,
+    number: +queryParam,
     ...properties,
     fun_fact,
   });
