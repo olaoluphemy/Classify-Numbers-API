@@ -2,7 +2,7 @@ const superagent = require("superagent");
 
 exports.getFunFact = async function (query) {
   const res = await superagent
-    .get(`http://numbersapi.com/${query}/math`)
+    .get(`http://numbersapi.com/${+query}/math`)
     .type("text/plain");
 
   return res.text;
