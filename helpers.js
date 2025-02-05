@@ -45,7 +45,7 @@ sumDigits = function (num) {
   let sum = 0;
 
   for (let i = 0; i < num.length; i++) {
-    if (num < 0 && i === 0) continue;
+    if (+num < 0 && i === 0) continue;
     sum = +num[i] + sum;
   }
 
@@ -53,6 +53,8 @@ sumDigits = function (num) {
 };
 
 getArmstrongProp = function (num) {
+  if (+num < 0) return false;
+
   const parsedNum = String(+num);
   const length = parsedNum.length;
   const values = [];
