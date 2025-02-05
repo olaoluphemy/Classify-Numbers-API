@@ -13,7 +13,7 @@ exports.getFunFact = async function (query) {
 };
 
 getPrimeState = function (num) {
-  if (num === 0) return false;
+  if (num <= 0) return false;
 
   let isPrime = true;
 
@@ -28,7 +28,7 @@ getPrimeState = function (num) {
 };
 
 getPerfectState = function (num) {
-  if (num === 0) return false;
+  if (num <= 0) return false;
 
   const divisors = [];
 
@@ -45,10 +45,11 @@ sumDigits = function (num) {
   let sum = 0;
 
   for (let i = 0; i < num.length; i++) {
+    if (num < 0 && i === 0) continue;
     sum = +num[i] + sum;
   }
 
-  return sum;
+  return num < 0 ? -sum : sum;
 };
 
 getArmstrongProp = function (num) {
